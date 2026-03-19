@@ -1,0 +1,20 @@
+{
+  "name": "serverui-ssr-backend",
+  "version": "1.0.0",
+  "description": "Node.js backend for a server-side rendered UI",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "ssr"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
