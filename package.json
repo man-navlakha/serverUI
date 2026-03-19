@@ -4,6 +4,7 @@
   "description": "Node.js backend for a server-side rendered UI",
   "main": "src/server.js",
   "scripts": {
+    "db:init": "node src/scripts/initDatabase.js",
     "dev": "node --watch src/server.js",
     "start": "node src/server.js"
   },
@@ -15,6 +16,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "pg": "^8.16.3"
   }
 }

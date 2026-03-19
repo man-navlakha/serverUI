@@ -1,13 +1,22 @@
 const express = require("express");
 const path = require("path");
+require("dotenv").config({
+  path: path.join(__dirname, "..", ".env")
+});
+const adminActivityRoute = require("./routes/admin/activity");
+const bottomBarRoute = require("./routes/v1/navigation/bottom-bar");
 const activityRoute = require("./routes/v1/home/page/activity");
 const { renderPage } = require("./views/renderPage");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use("/static", express.static(path.join(__dirname, "..", "public")));
 app.use("/v1/home/page/activity", activityRoute);
+app.use("/v1/navigation/bottom-bar", bottomBarRoute);
+app.use("/admin/activity", adminActivityRoute);
 
 app.get("/", (req, res) => {
   res.send(
@@ -22,8 +31,8 @@ app.get("/", (req, res) => {
           body: "Your SSR backend is running with Express and can render dynamic data into HTML."
         },
         {
-          title: "Next Step",
-          body: "Replace the sample content with your real routes, templates, and API integrations."
+          title: "Admin Ready",
+          body: "Open /admin/activity to manage the activity page data stored in Postgres."
         }
       ]
     })
